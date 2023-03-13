@@ -4,6 +4,7 @@ using UnityEngine;
 namespace ExpressoBits.Inventories.Netcode
 {
     [RequireComponent(typeof(Crafter))]
+    [AddComponentMenu("Expresso Bits/Inventories/Netcode/" + nameof(NetworkCrafter))]
     public class NetworkCrafter : NetworkBehaviour
     {
         private Crafter crafter;
@@ -56,7 +57,7 @@ namespace ExpressoBits.Inventories.Netcode
 
         private void ListChanged(NetworkListEvent<Crafting> changeEvent)
         {
-            if(m_CachedIsServer) return;
+            if (m_CachedIsServer) return;
             switch (changeEvent.Type)
             {
                 case NetworkListEvent<Crafting>.EventType.Add:

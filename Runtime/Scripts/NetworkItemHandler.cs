@@ -6,6 +6,7 @@ using UnityEngine;
 namespace ExpressoBits.Inventories.Netcode
 {
     [RequireComponent(typeof(ItemHandler))]
+    [AddComponentMenu("Expresso Bits/Inventories/Netcode/" + nameof(NetworkItemHandler))]
     public class NetworkItemHandler : NetworkBehaviour
     {
         public NetworkContainer[] Containers => containers;
