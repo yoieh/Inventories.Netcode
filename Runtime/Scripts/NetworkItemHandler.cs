@@ -216,7 +216,7 @@ namespace ExpressoBits.Inventories.Netcode
         }
 
         [ServerRpc]
-        private void CloseContainerServerRpc(NetworkBehaviourReference networkContainerReference, ClientRpcParams clientRpcParams = default)
+        private void CloseContainerServerRpc(NetworkBehaviourReference networkContainerReference, ServerRpcParams sererRpcParams = default)
         {
             if (!networkContainerReference.TryGet(out NetworkContainer networkContainer)) return;
             itemHandler.Close(networkContainer.Container);
