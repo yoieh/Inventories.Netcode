@@ -15,15 +15,14 @@ namespace ExpressoBits.Inventories.Netcode
         private bool m_CachedIsServer;
         [SerializeField] private SyncRpcOptions syncItemAddEvent;
         [SerializeField] private SyncRpcOptions syncItemRemoveEvent;
-        [SerializeField] private NetworkVariableReadPermission isOpenNetworkVariableReadPermission;
 
         private void Awake()
         {
-            isOpen = new NetworkVariable<bool>(isOpenNetworkVariableReadPermission, false);
+            isOpen = new NetworkVariable<bool>(false);
             container = GetComponent<Container>();
             syncList = new NetworkList<uint>();
         }
-        
+
         public override void OnNetworkSpawn()
         {
             m_CachedIsServer = IsServer;
@@ -73,7 +72,7 @@ namespace ExpressoBits.Inventories.Netcode
                     break;
                 case NetworkListEvent<uint>.EventType.Value:
                     slot = container.ToSlot(changeEvent.Value);
-                    if(container.Count > changeEvent.Index)
+                    if (container.Count > changeEvent.Index)
                     {
                         container[changeEvent.Index] = slot;
                     }
@@ -93,7 +92,7 @@ namespace ExpressoBits.Inventories.Netcode
             for (int i = 0; i < syncList.Count; i++)
             {
                 Slot slot = container.ToSlot(syncList[i]);
-                if(container.Count > i)
+                if (container.Count > i)
                 {
                     container[i] = slot;
                 }
