@@ -9,7 +9,7 @@ namespace ExpressoBits.Inventories.Netcode
     {
         public Container Container => container;
 
-        private Container container;
+        [SerializeField] private Container container;
         private NetworkList<uint> syncList;
         private NetworkVariable<bool> isOpen;
         private bool m_CachedIsServer;
@@ -19,7 +19,7 @@ namespace ExpressoBits.Inventories.Netcode
         private void Awake()
         {
             isOpen = new NetworkVariable<bool>(false);
-            container = GetComponent<Container>();
+            if (container == null) container = GetComponent<Container>();
             syncList = new NetworkList<uint>();
         }
 

@@ -11,7 +11,7 @@ namespace ExpressoBits.Inventories.Netcode
         public NetworkContainer[] Containers => containers;
         public ItemHandler ItemHandler => itemHandler;
 
-        private ItemHandler itemHandler;
+        [SerializeField] private ItemHandler itemHandler;
         private NetworkContainer[] containers;
         private bool m_CachedIsServer;
 
@@ -23,7 +23,7 @@ namespace ExpressoBits.Inventories.Netcode
 
         private void Awake()
         {
-            itemHandler = GetComponent<ItemHandler>();
+            if (itemHandler == null) itemHandler = GetComponent<ItemHandler>();
             containers = new NetworkContainer[ItemHandler.Containers.Length];
             for (int i = 0; i < itemHandler.Containers.Length; i++)
             {

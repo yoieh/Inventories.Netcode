@@ -6,7 +6,7 @@ namespace ExpressoBits.Inventories.Netcode
     [AddComponentMenu("Expresso Bits/Inventories/Netcode/" + nameof(NetworkCrafter))]
     public class NetworkCrafter : NetworkBehaviour
     {
-        private Crafter crafter;
+        [SerializeField] private Crafter crafter;
 
         public Crafter Crafter => crafter;
 
@@ -19,7 +19,7 @@ namespace ExpressoBits.Inventories.Netcode
 
         private void Awake()
         {
-            crafter = GetComponent<Crafter>();
+            if (crafter) crafter = GetComponent<Crafter>();
             syncCraftings = new NetworkList<Crafting>();
         }
 
