@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace ExpressoBits.Inventories.Netcode
 {
-    [RequireComponent(typeof(Crafter))]
     [AddComponentMenu("Expresso Bits/Inventories/Netcode/" + nameof(NetworkCrafter))]
     public class NetworkCrafter : NetworkBehaviour
     {
