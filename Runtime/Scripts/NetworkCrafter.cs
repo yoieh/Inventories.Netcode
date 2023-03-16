@@ -19,7 +19,7 @@ namespace ExpressoBits.Inventories.Netcode
 
         private void Awake()
         {
-            if (crafter) crafter = GetComponent<Crafter>();
+            if (crafter == null) crafter = GetComponent<Crafter>();
             syncCraftings = new NetworkList<Crafting>();
         }
 
